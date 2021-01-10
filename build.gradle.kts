@@ -6,7 +6,7 @@ plugins {
 
 object Globals {
     const val grp = "io.github.ytg1234"
-    val abn = project.name
+    const val abn = "template"
     const val version = "1.0.0"
 
     const val mcVer = "1.16.4"
