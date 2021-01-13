@@ -12,7 +12,7 @@ object Globals {
     const val mcVer = "1.16.4"
     const val yarnBuild = "7"
 
-    const val loaderVer = "0.10.8"
+    const val loaderVer = "0.11"
     const val fapiVer = "0.29.3+1.16"
 
     const val modrinthId = ""
