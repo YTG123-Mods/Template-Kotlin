@@ -9,8 +9,8 @@ object Globals {
     const val abn = "template"
     const val version = "1.0.0"
 
-    const val mcVer = "1.16.4"
-    const val yarnBuild = "7"
+    const val mcVer = "1.16.5"
+    const val yarnBuild = "1"
 
     const val loaderVer = "0.11.0"
     const val fapiVer = "0.29.3+1.16"
