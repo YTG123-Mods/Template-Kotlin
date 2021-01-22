@@ -1,4 +1,5 @@
 plugins {
+	kotlin("jvm") version "1.4.21"
     id("fabric-loom") version "0.5-SNAPSHOT"
     `maven-publish`
     id("com.modrinth.minotaur") version "1.1.0"
@@ -10,10 +11,11 @@ object Globals {
     const val version = "1.0.0"
 
     const val mcVer = "1.16.5"
-    const val yarnBuild = "1"
+    const val yarnBuild = "3"
 
-    const val loaderVer = "0.11.0"
+    const val loaderVer = "0.11.1"
     const val fapiVer = "0.29.3+1.16"
+	const val flkVer = "1.4.21+build.1"
 
     const val modrinthId = ""
     const val unstable = false
@@ -61,6 +63,7 @@ dependencies {
     modImplementation("net.fabricmc", "fabric-loader", Globals.loaderVer)
 
     modImplementation("net.fabricmc.fabric-api", "fabric-api", Globals.fapiVer)
+	modImplementation("net.fabricmc", "fabric-language-kotlin", Globals.flkVer)
 }
 
 tasks {
@@ -77,6 +80,10 @@ tasks {
         options.encoding = "UTF-8"
     }
 
+	 withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+		kotlinOptions.jvmTarget = "1.8"
+	 }
+
     register<Jar>("sourcesJar") {
         archiveClassifier.set("sources")
         from(sourceSets["main"].allSource)
@@ -85,17 +92,6 @@ tasks {
     jar {
         from("LICENSE")
     }
-
-    // javadoc {
-    //     options {
-    //         source = "8"
-    //         encoding = "UTF-8"
-    //         memberLevel = JavadocMemberLevel.PRIVATE
-    //     }
-    //
-    //     source(sourceSets["main"].allJava.srcDirs)
-    //     isFailOnError = false
-    // }
 
     register<com.modrinth.minotaur.TaskModrinthUpload>("publishModrinth") {
         token = System.getenv("MODRINTH_API_TOKEN")
