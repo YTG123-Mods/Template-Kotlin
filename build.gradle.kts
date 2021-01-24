@@ -145,6 +145,6 @@ publishing {
     }
 
     repositories {
-        maven(url = System.getenv("MAVEN_REPO"))
+        if (System.getenv("MAVEN_REPO") != null) maven(url = System.getenv("MAVEN_REPO"))
     }
 }
